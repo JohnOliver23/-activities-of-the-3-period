@@ -1,0 +1,11 @@
+10
+HORSE;o equino mais famoso
+MOVIE;BACK TO THE FUTURE é um:
+VEGETABLE;STURNIP, LETTUCE and LEEK are:
+DOCUMENTARY;um fime que conta uma história real
+EARTH;Planeta Terra em Inglês
+BIG;olhos podem ser
+CRY;como é chorar em inglês
+SINGER;Madonna is a...
+PLANCTON;who is the krusty crab's enemy
+PATRICK;who is the spongebob's best friend
