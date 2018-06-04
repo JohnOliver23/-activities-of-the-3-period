@@ -20,6 +20,8 @@ public class TesteRapidoProjeto {
 		parte1();
 		
 		parte2();
+		
+		parte3();
 		System.out.println("fim do teste");
 		
 	}
@@ -92,7 +94,29 @@ public class TesteRapidoProjeto {
 		
 	}
 	
-	
+	public static void parte3() {
+		try {
+			Fachada.criarConta(7);
+			Fachada.solicitarProduto(7, "galinhada");
+			Fachada.solicitarProduto(7, "cerveja");
+			System.out.println("conta da mesa 7: \n"+ Fachada.consultarConta(7));
+			
+			Fachada.criarConta(18);
+			Fachada.solicitarProduto(18, "agua");
+			Fachada.solicitarProduto(18, "refrigerante");
+			System.out.println("conta da mesa 18: \n"+ Fachada.consultarConta(18));
+			
+			Fachada.transferirConta(7, 18);
+			System.out.println("conta da mesa 18: \n"+ Fachada.consultarConta(18));
+			System.out.println("listando as mesas \n"+Fachada.listarMesas());
+			/*consultando a conta que foi fechada */
+			System.out.println("conta da mesa 7: \n"+ Fachada.consultarConta(7));
+			
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 
 }

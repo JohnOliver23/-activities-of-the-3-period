@@ -101,7 +101,7 @@ public class Fachada {
 	public static Conta consultarConta(int idmesa) throws Exception {
 		Conta aux = restaurante.localizarContaPorMesa(idmesa);
 		if(aux==null) {
-			throw new Exception("mesa inválida "+idmesa);
+			throw new Exception("conta inexistente "+idmesa);
 		}
 			return aux;
 		
@@ -125,15 +125,16 @@ public class Fachada {
 	
 	/*cancelar conta */
 	public static void cancelarConta(int idmesa) throws Exception{
-		Mesa m = restaurante.localizarMesa(idmesa);
+		Conta c = restaurante.localizarContaPorMesa(idmesa);
 		
-		if(m == null) {
-			throw new Exception("mesa inválida"+idmesa);
-		}else if(m.isOcupada() == false) {
+		if(c == null) {
+			throw new Exception("conta inválida"+idmesa);
+		}else if(c.getMesa().isOcupada() == false) {
 			throw new Exception("a conta não está em aberto !");
 		}
-		m.remover(m.localizar(idmesa));
-		restaurante.remover(m.localizar(idmesa));
+		c.getMesa().setOcupada(false);
+		c.getMesa().remover(c);
+		restaurante.remover(c);
 	}
 	/*transferir a conta */
 	public static void transferirConta(int idmesaorigem, int idmesadestino)throws Exception{
@@ -151,11 +152,9 @@ public class Fachada {
 		}
 		
 		for(Produto p : origem.getProdutos()) {
-			origem.remover(p);
 			destino.adicionar(p);
-			
 		}
-		restaurante.remover(origem);
+		cancelarConta(idmesaorigem);
 	}
 	/*fechar conta */
 	public static void fecharConta(int idmesa)throws Exception {
@@ -189,14 +188,8 @@ public class Fachada {
 			    	}
 			    }
 				
-				
-				
-			
 			return (gorgeta * 10)/100;
 		}
-		
-		
-		
 	}
 	
 	
