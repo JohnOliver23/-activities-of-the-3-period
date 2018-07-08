@@ -130,6 +130,57 @@ for each row execute procedure verifica_esporte()
 	select * from esporte 
 
 /*questão 5 */
+create or replace function quantidade_atletas(nomeesp varchar)
+returns integer as $$
+declare
+codesporte esporte.codesp%type;
+qtdesporte integer;
+begin
+select into strict codesporte codesp from esporte
+where descesp like nomeesp;
+
+select into qtdesporte count(codatl) from atleta
+where esporte = codesporte;
+  return qtdesporte;
+
+exception
+  when no_data_found then
+      return 0; 
+end;
+$$ language plpgsql;
+
+--testando com esporte existente
+do $$
+declare qtdlinhas integer;
+begin
+  select into qtdlinhas quantidade_atletas('Futebol');
+  raise notice 'Quantidade de linhas = %',qtdlinhas;
+end $$;
+
+--testando com esporte inexistente
+do $$
+declare qtdlinhas integer;
+begin
+  select into qtdlinhas quantidade_atletas('Artes Marciais');
+  raise notice 'Quantidade de linhas = %',qtdlinhas;
+end $$;
+
+--Questão 6 
+SELECT current_time AT TIME ZONE 'Japan';
+/*o codigo acima mostra o horario atual do pais passado como
+parametro , que no caso é japão */
+
+SELECT age(timestamp '2007-10-07');
+/*o código acima  calcula a idade em anos, meses e dias
+da data passada como parâmetro */
+
+SELECT CAST(3.1415926535897 AS NUMERIC(7,2));
+/*o código acima arredonda um numero em real em duas casas decimais */
+
+SELECT CAST('06/04/2018' AS DATE) + INTERVAL '27 DAYS' AS Data;
+
+/*o codigo calcula uma data mais um intervalo, que no caso é 27
+dias, o resultado será a data mais os 27 dias*/
 	   
 		
 		
