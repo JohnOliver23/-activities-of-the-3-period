@@ -1,6 +1,6 @@
 ﻿
-/* Indice para o nome dos pacientes */
- CREATE INDEX ind_nome_pac ON
+/* Indice para a data de nascimento dos pacientes */
+ CREATE INDEX ind_data_nasc_pac ON
 paciente(nome);
 
 /* Indice para o uf dos pacientes */
