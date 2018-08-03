@@ -1,0 +1,24 @@
+db.paciente.insert({
+ nome: "John",
+ sexo: "Men",
+ data_nasc: "01/12/1993",
+ email:["johnoliver021@gmail.com", "oliver0193@hotmail.com"],
+ endereço:{
+           uf: "PB",
+	   bairro: "CDA",
+	   cidade: "JP"},
+ exames:[
+	{data_Exame: "28/08/2015",
+	 object_id: "2017541256214785"},
+	 {data_Exame: "29/09/2015",
+	 object_id: "2014521545478789"},
+	]
+	
+})
+
+db.Exame.insert({
+ nome: "Urina",
+ valor: 20.00,
+ material: "Soro",
+ metodo: "treekap"
+ })
