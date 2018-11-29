@@ -26,7 +26,7 @@ public class Teste {
 	System.out.println(ana);
 	System.out.println(paulo);
 	System.out.println(julia);
-	
+	System.out.println("Este Ã© um Pull request!");
 	System.out.println("verificar se paulo tem o mesmo amigo de joão");
 	System.out.println(paulo.amigoComum(joao));
 	
